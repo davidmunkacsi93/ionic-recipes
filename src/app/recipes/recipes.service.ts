@@ -5,7 +5,7 @@ import { Recipe } from './recipe.model';
   providedIn: 'root'
 })
 export class RecipesService {
-  recipes: Recipe[] = [
+  private recipes: Recipe[] = [
     {
       id: 'r1',
       title: 'Schnitzel',
