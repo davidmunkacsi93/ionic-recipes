@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipesService } from '../recipes.service';
 
@@ -13,7 +13,8 @@ export class RecipeDetailPage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private recipesService: RecipesService) { }
+    private recipesService: RecipesService,
+    private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
@@ -26,4 +27,8 @@ export class RecipeDetailPage implements OnInit {
     });
   }
 
+  deleteRecipe(recipeId: string) {
+      this.recipesService.deleteRecipe(recipeId);
+      this.router.navigate(['/recipes']);
+  }
 }
