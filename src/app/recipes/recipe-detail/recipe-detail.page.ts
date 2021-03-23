@@ -30,8 +30,7 @@ export class RecipeDetailPage implements OnInit {
     });
   }
 
-  deleteRecipe(recipeId: string) {
-    console.log(recipeId);
+  onDeleteRecipe() {
     this.alertController.create({
       header: 'Are you sure?',
       message: 'Do you really want to delete the recipe?',
@@ -43,7 +42,7 @@ export class RecipeDetailPage implements OnInit {
         {
           text: 'Delete',
           handler: () => {
-            this.recipesService.deleteRecipe(recipeId);
+            this.recipesService.deleteRecipe(this.loadedRecipe.id);
             this.router.navigate(['/recipes']);
           },
         },
