@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { Recipe } from './recipe.model';
 import { RecipesService } from './recipes.service';
 
@@ -7,12 +8,13 @@ import { RecipesService } from './recipes.service';
   templateUrl: './recipes.page.html',
   styleUrls: ['./recipes.page.scss'],
 })
-export class RecipesPage implements OnInit {
+export class RecipesPage {
   recipes : Recipe[];
 
   constructor(private recipesService : RecipesService) { }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.recipes = this.recipesService.getAllRecipes();
   }
+
 }
